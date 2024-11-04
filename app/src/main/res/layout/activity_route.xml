@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FFFFFF"
+    tools:context=".RouteActivity">
+
+    <!-- Título da Tela -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Início do Trajeto"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Campo para exibir ou inserir a placa do veículo -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Placa do Veículo"
+        android:textColor="#000000"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/vehiclePlateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ex: ABC-1234"
+        android:textColor="#000000"
+        android:inputType="text"
+        android:padding="16dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Campo para inserir a quilometragem inicial do veículo -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quilometragem Inicial"
+        android:textColor="#000000"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/startKilometerEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ex: 12000 km"
+        android:textColor="#000000"
+        android:inputType="number"
+        android:padding="16dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Botão para finalizar o trajeto -->
+    <Button
+        android:id="@+id/btnRoute"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adicionar Inicio Do Trajeto"
+        android:backgroundTint="#6200EE"
+        android:textColor="#FFFFFF"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"/>
+</LinearLayout>
