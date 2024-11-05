@@ -1,18 +1,21 @@
 package com.example.diariodebordo
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 
 class RouteActivity : AppCompatActivity() {
@@ -30,7 +33,8 @@ class RouteActivity : AppCompatActivity() {
         }
 
 
-
+        /*
+        //Serviço de localização
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -67,11 +71,40 @@ class RouteActivity : AppCompatActivity() {
             }
 
         //LocationRequest.
-
+        */
 
         val plateEditText: EditText = findViewById(R.id.vehiclePlateEditText)
         val startKilometerEditText: EditText = findViewById(R.id.startKilometerEditText)
+        val endKilometerEditText: EditText = findViewById(R.id.endKilometerEditText)
+        val routeButton: Button = findViewById(R.id.btnRoute)
 
-        val RouteButton : Button = findViewById(R.id.btnRoute)
+        routeButton.setOnClickListener {
+            if (routeButton.text == "Iniciar novo Trajeto") {
+                val plateText = plateEditText.text.toString().trim()
+                val startKilometerText = startKilometerEditText.text.toString().trim()
+
+                if (plateText.isNotEmpty() && startKilometerText.isNotEmpty()) {
+                    routeButton.text = "Finalizar Trajeto"
+
+                    plateEditText.isEnabled = false
+                    startKilometerEditText.isEnabled = false
+                    endKilometerEditText.isEnabled = true
+                } else {
+                    Toast.makeText(this, "Por favor, preencha os campos Placa e Quilometragem Inicial.", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                val startKilometer = startKilometerEditText.text.toString().toIntOrNull()
+                val endKilometer = endKilometerEditText.text.toString().toIntOrNull()
+
+                if (endKilometer != null && startKilometer != null && endKilometer > startKilometer) {
+                    // Finaliza o trajeto e retorna à SummaryActivity
+                    val intent = Intent(this, SummaryActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this, "A quilometragem final deve ser maior que a inicial.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }
