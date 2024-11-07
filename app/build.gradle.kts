@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -36,6 +37,10 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp("androidx.room:room-compiler:2.5.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="24dp"
     android:background="#FFFFFF"
-    tools:context=".RouteActivity">
+    tools:context=".activity.RouteActivity">
 
     <!-- Título da Tela -->
     <TextView

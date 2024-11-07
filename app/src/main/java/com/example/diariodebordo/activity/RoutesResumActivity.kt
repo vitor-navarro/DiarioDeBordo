@@ -1,10 +1,11 @@
-package com.example.diariodebordo
+package com.example.diariodebordo.activity
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.diariodebordo.R
 
 class RoutesResumActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

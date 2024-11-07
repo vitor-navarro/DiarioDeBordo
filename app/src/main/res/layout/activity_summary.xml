@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="48dp"
     android:background="#FFFFFF"
-    tools:context=".SummaryActivity">
+    tools:context=".activity.SummaryActivity">
 
   <!-- Seção de informações do motorista -->
   <LinearLayout

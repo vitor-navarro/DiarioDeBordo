@@ -8,7 +8,7 @@
     android:gravity="center"
     android:padding="48dp"
     android:background="#FFFFFF"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <!-- Título do aplicativo -->
     <TextView
