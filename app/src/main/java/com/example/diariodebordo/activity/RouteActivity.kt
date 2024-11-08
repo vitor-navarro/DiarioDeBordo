@@ -17,6 +17,7 @@ import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 
 class RouteActivity : AppCompatActivity() {
 
@@ -102,6 +103,7 @@ class RouteActivity : AppCompatActivity() {
                 val endKilometer = endKilometerEditText.text.toString().toIntOrNull()
 
                 if (endKilometer != null && startKilometer != null && endKilometer > startKilometer) {
+
                     val route = Route(carId = 0, driverId = 0, initialMileage = startKilometer, finalMileage = endKilometer)
 
                     // Salvar a rota no banco de dados

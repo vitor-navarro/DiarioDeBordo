@@ -1,8 +1,10 @@
 package com.example.diariodebordo.data.database.entity
 
+import android.widget.TimePicker
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import java.time.LocalDateTime
 
 @Entity(
     tableName = "route",
@@ -18,6 +20,7 @@ data class Route(
     val driverId: Long,          // Referência à tabela Driver
     val carId: Long,             // Referência à tabela Car
     val initialMileage: Int,  // Quilometragem inicial
-    val finalMileage: Int     // Quilometragem final
+    val finalMileage: Int, // Quilometragem final
+    //val dateTime: LocalDateTime = LocalDateTime.now()
     // outros campos do trajeto caso sejam necessários no futuro
 )

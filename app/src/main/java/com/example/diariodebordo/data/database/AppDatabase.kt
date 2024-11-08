@@ -23,11 +23,9 @@ object DatabaseSingleton {
         context.applicationContext,
         AppDatabase::class.java,
         "app_database"
-      ).build()
+      ).fallbackToDestructiveMigration().build() //TODO remover o fallbackToDestrcutiveMigration ao lançar o app
       INSTANCE = instance
       instance
     }
   }
-
-
 }
