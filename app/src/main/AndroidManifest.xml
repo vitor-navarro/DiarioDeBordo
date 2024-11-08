@@ -16,6 +16,9 @@
         android:theme="@style/Theme.DiarioDeBordo"
         tools:targetApi="31">
         <activity
+            android:name=".activity.RouteAdatpter"
+            android:exported="false" />
+        <activity
             android:name=".activity.RoutesResumActivity"
             android:exported="false" />
         <activity

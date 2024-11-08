@@ -11,10 +11,10 @@ import com.example.diariodebordo.data.database.entity.Route
 interface RouteDao {
 
     @Insert
-    suspend fun insertRoute(route : Route)
+    suspend fun insertRoute(route: Route)
 
     @Query("SELECT * FROM route")
-    suspend fun getAllRoutes(): List<Route>
+    fun getAllRoutes(): List<Route>
 
     @Query("SELECT * FROM route WHERE driverId = :driverId")
     suspend fun getRoutesByDriver(driverId : Long): List<Route>
@@ -24,5 +24,5 @@ interface RouteDao {
 
     @Delete
     suspend fun deleteRoute(route : Route)
-    
+
 }

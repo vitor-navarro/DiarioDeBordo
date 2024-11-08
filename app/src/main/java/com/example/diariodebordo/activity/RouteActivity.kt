@@ -10,9 +10,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.diariodebordo.R
+import com.example.diariodebordo.data.database.AppDatabase
+import com.example.diariodebordo.data.database.DatabaseSingleton
+import com.example.diariodebordo.data.database.entity.Route
 import com.google.android.gms.location.LocationServices
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class RouteActivity : AppCompatActivity() {
+
+    private lateinit var database: AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +33,8 @@ class RouteActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        database = DatabaseSingleton.getDatabase(this)
 
 
         /*
@@ -74,6 +84,7 @@ class RouteActivity : AppCompatActivity() {
 
         routeButton.setOnClickListener {
             if (routeButton.text == "Iniciar novo Trajeto") {
+
                 val plateText = plateEditText.text.toString().trim()
                 val startKilometerText = startKilometerEditText.text.toString().trim()
 
@@ -91,10 +102,20 @@ class RouteActivity : AppCompatActivity() {
                 val endKilometer = endKilometerEditText.text.toString().toIntOrNull()
 
                 if (endKilometer != null && startKilometer != null && endKilometer > startKilometer) {
-                    // Finaliza o trajeto e retorna à SummaryActivity
-                    val intent = Intent(this, SummaryActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    val route = Route(carId = 0, driverId = 0, initialMileage = startKilometer, finalMileage = endKilometer)
+
+                    // Salvar a rota no banco de dados
+                    GlobalScope.launch(Dispatchers.IO) {
+                        database.routeDao().insertRoute(route)
+                        runOnUiThread {
+                            Toast.makeText(this@RouteActivity, "Rota salva com sucesso!", Toast.LENGTH_SHORT).show()
+
+                            // Navegar para a SummaryActivity
+                            val intent = Intent(this@RouteActivity, SummaryActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
                 } else {
                     Toast.makeText(this, "A quilometragem final deve ser maior que a inicial.", Toast.LENGTH_SHORT).show()
                 }
