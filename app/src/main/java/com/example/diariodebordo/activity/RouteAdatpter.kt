@@ -26,10 +26,10 @@ class RouteAdapter(private val routes: List<Route>) : RecyclerView.Adapter<Route
         val currentRoute = routes[position]
         //holder.routeInfoTextView.text = "Placa: ${currentRoute.carPlate}, Km inicial: ${currentRoute.startKilometer}, Km final: ${currentRoute.endKilometer}"
         holder.routeInfoTextView.text = """
+            Dia: ${currentRoute.dateTime.dayOfMonth}/${currentRoute.dateTime.monthValue}/${currentRoute.dateTime.year}
+                        as ${currentRoute.dateTime.hour}:${currentRoute.dateTime.minute}
             Km inicial: ${currentRoute.initialMileage}
             Km final: ${currentRoute.finalMileage}
-            Dia: ${currentRoute.dateTime.dayOfMonth}/${currentRoute.dateTime.monthValue}/${currentRoute.dateTime.year}
-            as ${currentRoute.dateTime.hour}:${currentRoute.dateTime.minute}
         """.trimIndent()
         holder.routeInfoTextView.setBackgroundColor(Color.parseColor("#F5F5F5"))
         val layoutParams = holder.routeInfoTextView.layoutParams
